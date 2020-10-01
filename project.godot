@@ -1,0 +1,50 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[  ]
+_global_script_class_icons={
+
+}
+
+[application]
+
+config/name="Whiteboard"
+run/main_scene="res://Main.tscn"
+config/icon="res://icon.png"
+
+[debug]
+
+gdscript/warnings/unused_class_variable=true
+
+[display]
+
+window/vsync/use_vsync=false
+
+[gdnative]
+
+singletons=[ "res://addons/godot-openvr/godot_openvr.gdnlib" ]
+
+[layer_names]
+
+3d_physics/layer_1="Environment"
+3d_physics/layer_2="Player"
+3d_physics/layer_3="Objects"
+3d_physics/layer_4="Whiteboard"
+
+[physics]
+
+common/physics_fps=90
+3d/active_soft_world=false
+common/enable_object_picking=false
+
+[rendering]
+
+threads/thread_model=2
+environment/default_environment="res://default_env.tres"

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 1, 1, 1 )
+
+[sub_resource type="SpatialMaterial" id=2]
+emission_enabled = true
+emission = Color( 1, 1, 1, 1 )
+emission_energy = 4.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[node name="CubeLight" type="MeshInstance"]
+use_in_baked_light = true
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )

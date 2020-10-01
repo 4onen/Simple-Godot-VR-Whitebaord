@@ -1,0 +1,27 @@
+extends Spatial
+
+func _ready():
+	var userdir := Directory.new()
+	var err := userdir.open("user://")
+	assert(not err)
+	if not userdir.dir_exists("Whiteboard"):
+		err = userdir.make_dir("Whiteboard")
+		assert(not err)
+	print("Loading...")
+	yield(get_tree(), "idle_frame")
+	yield(get_tree(), "idle_frame")
+	print("Drawing...")
+	$TestWhiteboard/Surface.draw(Vector3(0,0,0),Color(1,0,0))
+	yield(get_tree(), "idle_frame")
+	print("Saving...")
+	$TestWhiteboard.save()
+	yield(get_tree(), "idle_frame")
+	print("Loading...")
+	$TestWhiteboard.reload()
+	yield(get_tree(), "idle_frame")
+	print("Drawing...")
+	$TestWhiteboard/Surface.draw(Vector3(1,0,0),Color(0,1,0))
+	yield(get_tree(), "idle_frame")
+	print("Saving again...")
+	$TestWhiteboard.save()
+	print("Success!")

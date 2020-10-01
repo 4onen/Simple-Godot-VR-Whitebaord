@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Objects/WhiteboardSystem.gd" type="Script" id=1]
+[ext_resource path="res://Objects/Button.tscn" type="PackedScene" id=2]
+
+[node name="WhiteboardSystem" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="ControlButtons" type="Spatial" parent="."]
+
+[node name="SaveButton" parent="ControlButtons" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0, 0 )
+
+[node name="RightButton" parent="ControlButtons" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0 )
+
+[node name="LeftButton" parent="ControlButtons" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0, 0 )
+
+[node name="LoadButton" parent="ControlButtons" instance=ExtResource( 2 )]
+
+[node name="WhiteboardOrigin" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
+
+[node name="WhiteboardCarouselOffset" type="Spatial" parent="WhiteboardOrigin"]
+[connection signal="button_down" from="ControlButtons/SaveButton" to="." method="_on_SaveButton_button_down"]
+[connection signal="button_down" from="ControlButtons/RightButton" to="." method="_on_RightButton_button_down"]
+[connection signal="button_down" from="ControlButtons/LeftButton" to="." method="_on_LeftButton_button_down"]
+[connection signal="button_down" from="ControlButtons/LoadButton" to="." method="_on_LoadButton_button_down"]

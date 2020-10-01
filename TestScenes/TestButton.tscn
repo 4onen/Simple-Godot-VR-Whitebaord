@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://TestScenes/TestButton.gd" type="Script" id=1]
+[ext_resource path="res://Objects/Button.tscn" type="PackedScene" id=2]
+
+[sub_resource type="SphereShape" id=1]
+radius = 0.1
+
+[sub_resource type="SphereMesh" id=2]
+radius = 0.1
+height = 0.2
+radial_segments = 4
+rings = 3
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Button" parent="." instance=ExtResource( 2 )]
+
+[node name="Weight" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28299, 0 )
+mass = 1000.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Weight"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Weight"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Weight2" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.36922, 0 )
+mass = 1000.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Weight2"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Weight2"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0396731, 0.473273 )
+[connection signal="button_down" from="Button" to="." method="_on_Button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_Button_button_up"]

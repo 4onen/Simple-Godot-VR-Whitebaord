@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Objects/Whiteboard/Mark.png" type="Texture" id=1]
+[ext_resource path="res://Objects/Whiteboard/WhiteboardSurface.gd" type="Script" id=2]
+[ext_resource path="res://Objects/Whiteboard/WhitePixel.png" type="Texture" id=3]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1.618, 1, 0.05 )
+
+[sub_resource type="QuadMesh" id=2]
+size = Vector2( 3.236, 2 )
+
+[node name="Surface" type="StaticBody"]
+collision_layer = 9
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="SurfaceCollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 1024, 512 )
+hdr = false
+disable_3d = true
+usage = 0
+render_target_v_flip = true
+render_target_clear_mode = 1
+render_target_update_mode = 1
+gui_disable_input = true
+shadow_atlas_quad_0 = 0
+shadow_atlas_quad_1 = 0
+shadow_atlas_quad_2 = 0
+shadow_atlas_quad_3 = 0
+
+[node name="Background" type="TextureRect" parent="Viewport"]
+margin_right = 1024.0
+margin_bottom = 512.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mark" type="TextureRect" parent="Viewport"]
+margin_right = 10.0
+margin_bottom = 10.0
+texture = ExtResource( 1 )
